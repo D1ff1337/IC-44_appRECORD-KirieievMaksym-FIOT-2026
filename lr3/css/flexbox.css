@@ -1,18 +1,15 @@
-/* ===== Завдання №3, варіант 7 — верстка Flexbox ===== */
 :root { --blue: #3399f3; --orange: #ff9933; --yellow: #ffe100; --gold: #ffd43b; --dark: #222328; }
 * { box-sizing: border-box; }
 html { font-size: 100%; }
 body { margin: 0; font-family: "Montserrat", Arial, sans-serif; color: var(--dark); background: #fff; }
 a { text-decoration: none; }
 
-/* Кнопки */
 .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.9rem 1.5rem; font-size: 0.85rem; font-weight: 700; color: var(--dark); border-radius: 0.3rem; transition: transform .25s, box-shadow .25s; }
 .btn:hover { transform: translateY(-0.15rem); box-shadow: 0 0.4rem 0.9rem rgba(0, 0, 0, .25); }
 .btn--yellow { background: var(--yellow); }
 .btn--gold { background: var(--gold); }
 .btn--blue { background: var(--blue); }
 
-/* ===== 1. Навігація ===== */
 .topbar { padding: 0.5rem 1rem; }
 .menu { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.5rem; max-width: 48rem; }
 .menu a, .city { display: flex; align-items: center; padding: 0.6rem 0.8rem; font: 700 0.95rem "Montserrat", Arial, sans-serif; color: #fff; background: #000; transition: background .25s; }
@@ -20,7 +17,6 @@ a { text-decoration: none; }
 .city { flex: 1 1 10rem; justify-content: center; gap: 0.9rem; border: 0; background: #444; cursor: pointer; }
 .arrow { width: 0; height: 0; border: 0.3rem solid transparent; border-top-color: var(--blue); margin-top: 0.3rem; }
 
-/* ===== 2. Програма курсу ===== */
 .program { display: flex; flex-direction: column; padding: 2rem 4%; border-bottom: 1px solid #000; }
 .program__title { margin: 0 0 3rem; text-align: center; font-size: 2.6rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; }
 .program__title span { display: block; font-size: 1.3rem; color: var(--orange); text-transform: uppercase; }
@@ -42,7 +38,6 @@ a { text-decoration: none; }
 .ghost { -webkit-text-stroke: 0; }
 .program__btn { align-self: flex-end; margin-top: -3.5rem; }
 
-/* ===== 3. Тарифи ===== */
 .pricing { padding: 0 0 3rem; background: var(--blue); }
 .pricing__tab { display: inline-block; padding: 0.55rem 3rem 0.55rem 0.9rem; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; background: var(--gold); clip-path: polygon(0 0, 100% 0, calc(100% - 1.2rem) 100%, 0 100%); }
 .pricing__cards { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; padding: 1.5rem 5.5% 0; }
@@ -59,7 +54,6 @@ a { text-decoration: none; }
 .plan__price { margin: 0.6rem 0; padding-bottom: 0.7rem; font-size: 1.4rem; font-weight: 800; text-align: center; color: var(--blue); border-bottom: 1px solid #eee; }
 .plan__places { margin-bottom: 0.7rem; font-size: 0.65rem; font-weight: 700; text-align: center; color: var(--blue); }
 
-/* ===== 4. Банер ===== */
 .banner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 2.2rem 5%; background: var(--blue); border-top: 1px solid #333; }
 .banner p { margin: 0; }
 .banner__small { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; color: #fff; }
@@ -67,7 +61,6 @@ a { text-decoration: none; }
 .banner__note { margin-top: 1.4rem !important; font-size: 0.95rem; font-weight: 600; color: #fff; }
 .banner .btn { flex: 0 0 16.5rem; margin-right: 12%; }
 
-/* ===== 5. Головний блок QA ===== */
 .hero { position: relative; display: flex; align-items: center; justify-content: space-between; overflow: hidden; min-height: 25rem; border-top: 1px solid var(--blue); }
 .hero__bgtext { position: absolute; top: 0; left: 0; font-size: 18rem; font-weight: 800; line-height: 1; color: #f7f7f7; white-space: nowrap; }
 .hero__text { position: relative; flex: 0 1 38rem; padding: 2rem 2rem 2rem 2%; }
@@ -78,7 +71,6 @@ a { text-decoration: none; }
 .hero__photo { position: relative; align-self: stretch; display: flex; align-items: flex-end; justify-content: center; flex: 0 0 34%; background: linear-gradient(to right, transparent 25%, var(--blue) 25%); }
 .hero__photo svg { width: 100%; max-width: 19rem; height: auto; }
 
-/* ===== Адаптивність (media queries) ===== */
 @media (max-width: 1024px) {
   .program__row { flex-wrap: wrap; }
   .ghost { display: none; }

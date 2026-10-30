@@ -384,7 +384,7 @@ tr:nth-child(even) { background: #eef3f9; }
   &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<h3>css/style.css</h3><pre><code>/* ===== Змінні та базові стилі (rem — відносно розміру шрифту html) ===== */
+<h3>css/style.css</h3><pre><code>
 :root {
   --dark: #1f3a5f;
   --blue: #3f7cac;
@@ -402,7 +402,6 @@ h2 { color: var(--dark); border-bottom: 0.125rem solid var(--blue); }
 a { color: var(--blue); }
 img { max-width: 100%; height: auto; }
 
-/* ===== Шапка: логотип + навігація (flexbox) ===== */
 #main-header {
   position: sticky; top: 0; z-index: 10;
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
@@ -416,14 +415,12 @@ nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
 nav &gt; a {
   position: relative; padding: 0.25rem 0; color: #fff; text-decoration: none;
 }
-/* підкреслення, що плавно виростає при наведенні */
 nav &gt; a::after {
   content: &quot;&quot;; position: absolute; left: 0; bottom: 0; width: 100%; height: 0.125rem;
   background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .3s;
 }
 nav &gt; a:hover::after, nav &gt; a:focus-visible::after { transform: scaleX(1); }
 
-/* Кнопка «бургер» (на великих екранах прихована) */
 .burger {
   display: none; width: 2.75rem; height: 2.75rem; padding: 0.6rem;
   flex-direction: column; justify-content: space-between;
@@ -434,7 +431,6 @@ nav &gt; a:hover::after, nav &gt; a:focus-visible::after { transform: scaleX(1);
 .burger.active span:nth-child(2) { opacity: 0; }
 .burger.active span:nth-child(3) { transform: translateY(-0.52rem) rotate(-45deg); }
 
-/* ===== Основний блок ===== */
 main { max-width: 70rem; width: 100%; margin: 0 auto; padding: 0 4vw 2rem; }
 main.doc { max-width: 56rem; }
 section { margin-top: 2rem; }
@@ -443,14 +439,12 @@ section { margin-top: 2rem; }
 #hero img { width: 100%; max-height: 45vh; object-fit: cover; border-radius: 0.75rem; }
 h2 + p { font-style: italic; }
 
-/* Картки переваг — CSS Grid */
 .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
 .feature { padding: 1.25rem; text-align: center; background: #fff; border: 0.125rem solid var(--dark); border-radius: 0.75rem; }
 .feature .ico { font-size: 2rem; }
 .feature h3 { margin: 0.5rem 0; color: var(--dark); }
 .feature p { margin: 0; font-size: 0.95rem; }
 
-/* Картки книг — Flexbox із переносом */
 .cards { display: flex; flex-wrap: wrap; gap: var(--gap); }
 .card {
   flex: 1 1 calc((100% - 2 * var(--gap)) / 3);
@@ -485,7 +479,6 @@ label { display: block; width: 100%; margin-top: 0.5rem; }
 input[type=&quot;text&quot;], input[type=&quot;email&quot;] { width: 100%; padding: 0.5rem; font: inherit; border: 0.125rem solid #ccc; border-radius: 0.3rem; transition: border-color .3s, box-shadow .3s; }
 input[type=&quot;text&quot;]:focus, input[type=&quot;email&quot;]:focus { outline: 0; border-color: var(--blue); box-shadow: 0 0 0 0.2rem rgba(63, 124, 172, .25); }
 
-/* ===== Підвал ===== */
 #main-footer { margin-top: 2rem; padding: 1.5rem 4vw 1rem; color: #fff; background: var(--dark); }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--gap); max-width: 70rem; margin: 0 auto; }
 .footer-inner &gt; div { flex: 1 1 14rem; }
@@ -493,7 +486,6 @@ input[type=&quot;text&quot;]:focus, input[type=&quot;email&quot;]:focus { outlin
 .footer-inner a { color: var(--gold); }
 .copy { margin: 1rem 0 0; text-align: center; font-size: 0.85rem; }
 
-/* ===== Анімації ===== */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(1.5rem); } to { opacity: 1; transform: none; } }
 @keyframes slideDown { from { opacity: 0; transform: translateY(-0.75rem); } to { opacity: 1; transform: none; } }
 section { animation: fadeUp .8s ease both; }
@@ -504,25 +496,19 @@ section { animation: fadeUp .8s ease both; }
 .card:nth-child(3), .feature:nth-child(3) { animation-delay: .3s; }
 .feature:nth-child(4) { animation-delay: .45s; }
 
-/* ==========================================================
-   МЕДІА-ЗАПИТИ (mobile / tablet / desktop) та логічні оператори
-   ========================================================== */
 
-/* Ефекти наведення лише там, де є «справжній» курсор: and */
 @media (hover: hover) and (pointer: fine) {
   .card:hover { transform: translateY(-0.5rem); box-shadow: 0 0.75rem 1.5rem rgba(31, 58, 95, .3); }
   .feature { transition: background .3s, transform .3s; }
   .feature:hover { background: #fff7e0; transform: scale(1.03); }
 }
 
-/* ПЛАНШЕТ: 601px – 1024px (and — «і») */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
   #main-header nav { flex-basis: 100%; justify-content: space-between; }
   .features { grid-template-columns: repeat(2, 1fr); }
   .card { flex-basis: calc((100% - var(--gap)) / 2); }
 }
 
-/* МОБІЛЬНИЙ: до 600px — бургер-меню, одна колонка */
 @media screen and (max-width: 600px) {
   html { font-size: 93.75%; }
   .burger { display: flex; }
@@ -537,26 +523,21 @@ section { animation: fadeUp .8s ease both; }
   #hero img { max-height: 30vh; }
 }
 
-/* «Або» (кома): дуже вузький екран АБО низький екран у горизонтальній орієнтації */
 @media (max-width: 360px), (orientation: landscape) and (max-height: 420px) {
   #main-header { position: static; }
   #hero img { max-height: 60vh; }
 }
 
-/* Горизонтальна орієнтація на планшетах/телефонах */
 @media (orientation: landscape) and (max-width: 900px) {
   .features { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* not: усі екрани, окрім друку — плавна прокрутка */
 @media not print { html { scroll-behavior: smooth; } }
 
-/* Користувач просить менше анімацій */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
 
-/* Друк */
 @media print {
   #main-header, .burger { display: none; }
   body { background: #fff; }
@@ -573,11 +554,8 @@ function setMenu(open) {
 }
 
 burger.addEventListener(&quot;click&quot;, () =&gt; setMenu(!menu.classList.contains(&quot;open&quot;)));
-// закриття меню після вибору пункту
 menu.querySelectorAll(&quot;a&quot;).forEach(a =&gt; a.addEventListener(&quot;click&quot;, () =&gt; setMenu(false)));
-// закриття клавішею Esc
 document.addEventListener(&quot;keydown&quot;, e =&gt; { if (e.key === &quot;Escape&quot;) setMenu(false); });
-// при збільшенні вікна меню скидається
 window.matchMedia(&quot;(min-width: 601px)&quot;).addEventListener(&quot;change&quot;, e =&gt; { if (e.matches) setMenu(false); });</code></pre>
 <h3>Особливості макету</h3><ul>
 <li><b>Семантика:</b> <code>header</code> (логотип + <code>nav</code>), <code>main</code> із <code>section</code> та <code>article</code>-картками, <code>footer</code> з контактами.</li>
@@ -596,22 +574,17 @@ window.matchMedia(&quot;(min-width: 601px)&quot;).addEventListener(&quot;change&
 <figure><img src="img/lr3-site-tablet.png" alt="Планшетна версія (820px)"><figcaption>Планшетна версія — 820px</figcaption></figure>
 <div class="shots"><figure><img src="img/lr3-site-mobile.png" alt="Мобільна версія (390px)"><figcaption>Мобільна версія — 390px</figcaption></figure><figure><img src="img/lr3-site-mobile-menu.png" alt="Мобільна версія з відкритим меню"><figcaption>Відкрите «бургер»-меню</figcaption></figure></div>
 <h3>Медіа-запити та логічні оператори</h3>
-<pre><code>/* and — «і»: діапазон ширин (планшет) */
+<pre><code>
 @media screen and (min-width: 601px) and (max-width: 1024px) { ... }
 
-/* and — ефекти наведення лише на пристроях із курсором */
 @media (hover: hover) and (pointer: fine) { ... }
 
-/* кома — «або»: дуже вузький екран АБО низький екран у горизонтальній орієнтації */
 @media (max-width: 360px), (orientation: landscape) and (max-height: 420px) { ... }
 
-/* not — усі пристрої, окрім друку */
 @media not print { html { scroll-behavior: smooth; } }
 
-/* орієнтація пристрою */
 @media (orientation: landscape) and (max-width: 900px) { ... }
 
-/* повага до налаштувань користувача */
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }</code></pre>
 <table class="t"><tr><th>Оператор</th><th>Значення</th><th>Приклад у проєкті</th></tr>
 <tr><td><code>and</code></td><td>всі умови одночасно (логічне «І»)</td><td><code>screen and (min-width: 601px) and (max-width: 1024px)</code></td></tr>
@@ -653,8 +626,6 @@ figcaption { font-size: 0.85rem; color: #555; }
 a { overflow-wrap: anywhere; }
 main { overflow-wrap: break-word; }
 
-/* ===== Адаптивність звіту (ЛР №3) ===== */
-/* Планшет: 601px – 1024px (and) */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
   header { padding: 0.75rem 4vw; }
   nav { padding: 0.75rem 4vw; }
@@ -663,7 +634,6 @@ main { overflow-wrap: break-word; }
   .side { flex-direction: row; flex-wrap: wrap; }
   .sub { margin-left: 0; }
 }
-/* Мобільний: до 600px */
 @media screen and (max-width: 600px) {
   header { flex-direction: column-reverse; gap: 0.75rem; padding: 0.75rem 4vw; text-align: center; }
   h1 { font-size: 0.95rem; }
@@ -676,11 +646,9 @@ main { overflow-wrap: break-word; }
   pre { max-height: 300px; font-size: 0.75rem; }
   th, td { padding: 4px; font-size: 0.85rem; }
 }
-/* «або» (кома): дуже вузький екран або низький екран у горизонтальній орієнтації */
 @media (max-width: 360px), (orientation: landscape) and (max-height: 420px) {
   pre { max-height: 220px; }
 }
-/* not: усе, окрім друку */
 @media not print { html { scroll-behavior: smooth; } }
 @media print { nav, aside { display: none; } [hidden] { display: block; } }</code></pre></article><article id="l3-t2" hidden><h2>Завдання №2. Таблична та блокова верстка</h2>
 <p>Номер варіанта: таблична верстка — <b>7</b>, блокова (плаваючі елементи) — <b>8</b> (7 + 1).</p>
@@ -709,13 +677,13 @@ main { overflow-wrap: break-word; }
     &lt;tr&gt;&lt;td class=&quot;c3&quot; colspan=&quot;3&quot;&gt;3 — Підвал (footer)&lt;/td&gt;&lt;/tr&gt;
   &lt;/table&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h3>css/task2.css</h3><pre><code>/* Завдання №2: спільні стилі для табличної та блокової верстки */
+&lt;/html&gt;</code></pre><h3>css/task2.css</h3><pre><code>
 body { margin: 0; padding: 1rem; font-family: Arial, sans-serif; background: #e9eef5; }
 h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
 .c1, .c3 { background: #1e7bd8; color: #fff; text-align: center; font-weight: bold; }
 .c2, .c5 { background: #ffc700; text-align: center; }
 .c4 { background: #fff; text-align: center; }
-.cell { padding: 1rem; }</code></pre><h3>css/table-fixed.css</h3><pre><code>/* Фіксована таблична верстка: ширина в px */
+.cell { padding: 1rem; }</code></pre><h3>css/table-fixed.css</h3><pre><code>
 .layout { width: 800px; margin: 0 auto; border-collapse: collapse; table-layout: fixed; }
 .layout td { height: 4rem; padding: 0.75rem; border: 1px solid #fff; }
 .layout .c1, .layout .c3 { height: 5rem; }
@@ -743,7 +711,7 @@ h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
     &lt;tr&gt;&lt;td class=&quot;c3&quot; colspan=&quot;3&quot;&gt;3 — Підвал (footer)&lt;/td&gt;&lt;/tr&gt;
   &lt;/table&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h3>css/table-fluid.css</h3><pre><code>/* Гумова таблична верстка: ширина у відсотках */
+&lt;/html&gt;</code></pre><h3>css/table-fluid.css</h3><pre><code>
 .layout { width: 100%; margin: 0 auto; border-collapse: collapse; table-layout: fixed; }
 .layout td { height: 4rem; padding: 0.75rem; border: 1px solid #fff; }
 .layout .c1, .layout .c3 { height: 5rem; }
@@ -770,11 +738,10 @@ h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
     &lt;div class=&quot;c3 cell&quot; id=&quot;footer&quot;&gt;3 — Підвал (clear: both)&lt;/div&gt;
   &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h3>css/block-fixed.css</h3><pre><code>/* Фіксована блокова верстка на плаваючих елементах (float) */
+&lt;/html&gt;</code></pre><h3>css/block-fixed.css</h3><pre><code>
 .wrap { width: 800px; margin: 0 auto; }
 .cell { box-sizing: border-box; }
 #header, #footer { height: 5rem; }
-/* «Хибна колонка»: фон лівої колонки малюється на контейнері, тому вона виглядає однакової висоти з правою частиною */
 .body { overflow: hidden; background: linear-gradient(to right, #ffc700 150px, #fff 150px); }
 #left { float: left; width: 150px; height: 22rem; }
 #top { float: left; width: 650px; height: 4rem; background: #ffc700; }
@@ -800,7 +767,7 @@ h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
     &lt;div class=&quot;c3 cell&quot; id=&quot;footer&quot;&gt;3 — Підвал (clear: both)&lt;/div&gt;
   &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h3>css/block-fluid.css</h3><pre><code>/* Гумова блокова верстка на плаваючих елементах (float), ширини у % */
+&lt;/html&gt;</code></pre><h3>css/block-fluid.css</h3><pre><code>
 .wrap { width: 100%; margin: 0 auto; }
 .cell { box-sizing: border-box; }
 #header, #footer { height: 5rem; }
@@ -826,7 +793,6 @@ h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
   &lt;link rel=&quot;stylesheet&quot; href=&quot;css/flexbox.css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;!-- 1. Навігація --&gt;
   &lt;header class=&quot;topbar&quot;&gt;
     &lt;nav class=&quot;menu&quot; aria-label=&quot;Головне меню&quot;&gt;
       &lt;a href=&quot;#&quot;&gt;Форми навчання&lt;/a&gt;
@@ -837,7 +803,6 @@ h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
     &lt;/nav&gt;
   &lt;/header&gt;
 
-  &lt;!-- 2. Програма курсу --&gt;
   &lt;section class=&quot;program&quot;&gt;
     &lt;h2 class=&quot;program__title&quot;&gt;&lt;span&gt;Программа курсу&lt;/span&gt;React&lt;/h2&gt;
     &lt;div class=&quot;program__row&quot;&gt;
@@ -862,7 +827,6 @@ h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
     &lt;a class=&quot;btn btn--yellow program__btn&quot; href=&quot;#&quot;&gt;Записатись на курс&lt;/a&gt;
   &lt;/section&gt;
 
-  &lt;!-- 3. Тарифи --&gt;
   &lt;section class=&quot;pricing&quot;&gt;
     &lt;div class=&quot;pricing__tab&quot;&gt;Стаціонар&lt;/div&gt;
     &lt;div class=&quot;pricing__cards&quot;&gt;
@@ -907,7 +871,6 @@ h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
     &lt;/div&gt;
   &lt;/section&gt;
 
-  &lt;!-- 4. Банер --&gt;
   &lt;section class=&quot;banner&quot;&gt;
     &lt;div class=&quot;banner__text&quot;&gt;
       &lt;p class=&quot;banner__small&quot;&gt;Навчайся зараз&lt;/p&gt;
@@ -917,7 +880,6 @@ h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
     &lt;a class=&quot;btn btn--yellow&quot; href=&quot;#&quot;&gt;Дізнатись деталі&lt;/a&gt;
   &lt;/section&gt;
 
-  &lt;!-- 5. Головний блок QA --&gt;
   &lt;section class=&quot;hero&quot;&gt;
     &lt;div class=&quot;hero__bgtext&quot; aria-hidden=&quot;true&quot;&gt;QA/QO&lt;/div&gt;
     &lt;div class=&quot;hero__text&quot;&gt;
@@ -939,21 +901,19 @@ h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
     &lt;/div&gt;
   &lt;/section&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre></article><article id="l3-fx-css" hidden><h2>CSS-код сторінки Flexbox</h2><h3>css/flexbox.css</h3><pre><code>/* ===== Завдання №3, варіант 7 — верстка Flexbox ===== */
+&lt;/html&gt;</code></pre></article><article id="l3-fx-css" hidden><h2>CSS-код сторінки Flexbox</h2><h3>css/flexbox.css</h3><pre><code>
 :root { --blue: #3399f3; --orange: #ff9933; --yellow: #ffe100; --gold: #ffd43b; --dark: #222328; }
 * { box-sizing: border-box; }
 html { font-size: 100%; }
 body { margin: 0; font-family: &quot;Montserrat&quot;, Arial, sans-serif; color: var(--dark); background: #fff; }
 a { text-decoration: none; }
 
-/* Кнопки */
 .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.9rem 1.5rem; font-size: 0.85rem; font-weight: 700; color: var(--dark); border-radius: 0.3rem; transition: transform .25s, box-shadow .25s; }
 .btn:hover { transform: translateY(-0.15rem); box-shadow: 0 0.4rem 0.9rem rgba(0, 0, 0, .25); }
 .btn--yellow { background: var(--yellow); }
 .btn--gold { background: var(--gold); }
 .btn--blue { background: var(--blue); }
 
-/* ===== 1. Навігація ===== */
 .topbar { padding: 0.5rem 1rem; }
 .menu { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.5rem; max-width: 48rem; }
 .menu a, .city { display: flex; align-items: center; padding: 0.6rem 0.8rem; font: 700 0.95rem &quot;Montserrat&quot;, Arial, sans-serif; color: #fff; background: #000; transition: background .25s; }
@@ -961,7 +921,6 @@ a { text-decoration: none; }
 .city { flex: 1 1 10rem; justify-content: center; gap: 0.9rem; border: 0; background: #444; cursor: pointer; }
 .arrow { width: 0; height: 0; border: 0.3rem solid transparent; border-top-color: var(--blue); margin-top: 0.3rem; }
 
-/* ===== 2. Програма курсу ===== */
 .program { display: flex; flex-direction: column; padding: 2rem 4%; border-bottom: 1px solid #000; }
 .program__title { margin: 0 0 3rem; text-align: center; font-size: 2.6rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; }
 .program__title span { display: block; font-size: 1.3rem; color: var(--orange); text-transform: uppercase; }
@@ -983,7 +942,6 @@ a { text-decoration: none; }
 .ghost { -webkit-text-stroke: 0; }
 .program__btn { align-self: flex-end; margin-top: -3.5rem; }
 
-/* ===== 3. Тарифи ===== */
 .pricing { padding: 0 0 3rem; background: var(--blue); }
 .pricing__tab { display: inline-block; padding: 0.55rem 3rem 0.55rem 0.9rem; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; background: var(--gold); clip-path: polygon(0 0, 100% 0, calc(100% - 1.2rem) 100%, 0 100%); }
 .pricing__cards { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; padding: 1.5rem 5.5% 0; }
@@ -1000,7 +958,6 @@ a { text-decoration: none; }
 .plan__price { margin: 0.6rem 0; padding-bottom: 0.7rem; font-size: 1.4rem; font-weight: 800; text-align: center; color: var(--blue); border-bottom: 1px solid #eee; }
 .plan__places { margin-bottom: 0.7rem; font-size: 0.65rem; font-weight: 700; text-align: center; color: var(--blue); }
 
-/* ===== 4. Банер ===== */
 .banner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 2.2rem 5%; background: var(--blue); border-top: 1px solid #333; }
 .banner p { margin: 0; }
 .banner__small { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; color: #fff; }
@@ -1008,7 +965,6 @@ a { text-decoration: none; }
 .banner__note { margin-top: 1.4rem !important; font-size: 0.95rem; font-weight: 600; color: #fff; }
 .banner .btn { flex: 0 0 16.5rem; margin-right: 12%; }
 
-/* ===== 5. Головний блок QA ===== */
 .hero { position: relative; display: flex; align-items: center; justify-content: space-between; overflow: hidden; min-height: 25rem; border-top: 1px solid var(--blue); }
 .hero__bgtext { position: absolute; top: 0; left: 0; font-size: 18rem; font-weight: 800; line-height: 1; color: #f7f7f7; white-space: nowrap; }
 .hero__text { position: relative; flex: 0 1 38rem; padding: 2rem 2rem 2rem 2%; }
@@ -1019,7 +975,6 @@ a { text-decoration: none; }
 .hero__photo { position: relative; align-self: stretch; display: flex; align-items: flex-end; justify-content: center; flex: 0 0 34%; background: linear-gradient(to right, transparent 25%, var(--blue) 25%); }
 .hero__photo svg { width: 100%; max-width: 19rem; height: auto; }
 
-/* ===== Адаптивність (media queries) ===== */
 @media (max-width: 1024px) {
   .program__row { flex-wrap: wrap; }
   .ghost { display: none; }
@@ -1037,7 +992,7 @@ a { text-decoration: none; }
   .hero { flex-direction: column; }
   .hero__text { flex-basis: auto; padding-right: 5%; }
   .hero__photo { flex-basis: auto; width: 100%; min-height: 18rem; }
-}</code></pre><h3>css/fonts.css</h3><pre><code>/* Montserrat (локально, кирилиця + латиниця) */
+}</code></pre><h3>css/fonts.css</h3><pre><code>
 @font-face { font-family: &quot;Montserrat&quot;; font-weight: 500; src: url(&quot;../fonts/montserrat-cyrillic-500-normal.woff2&quot;) format(&quot;woff2&quot;); unicode-range: U+0400-04FF; }
 @font-face { font-family: &quot;Montserrat&quot;; font-weight: 500; src: url(&quot;../fonts/montserrat-latin-500-normal.woff2&quot;) format(&quot;woff2&quot;); unicode-range: U+0000-00FF; }
 @font-face { font-family: &quot;Montserrat&quot;; font-weight: 600; src: url(&quot;../fonts/montserrat-cyrillic-600-normal.woff2&quot;) format(&quot;woff2&quot;); unicode-range: U+0400-04FF; }

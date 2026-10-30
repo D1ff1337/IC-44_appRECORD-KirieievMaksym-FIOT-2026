@@ -1,8 +1,6 @@
-/* Фіксована блокова верстка на плаваючих елементах (float) */
 .wrap { width: 800px; margin: 0 auto; }
 .cell { box-sizing: border-box; }
 #header, #footer { height: 5rem; }
-/* «Хибна колонка»: фон лівої колонки малюється на контейнері, тому вона виглядає однакової висоти з правою частиною */
 .body { overflow: hidden; background: linear-gradient(to right, #ffc700 150px, #fff 150px); }
 #left { float: left; width: 150px; height: 22rem; }
 #top { float: left; width: 650px; height: 4rem; background: #ffc700; }

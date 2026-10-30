@@ -1,4 +1,3 @@
-/* Гумова блокова верстка на плаваючих елементах (float), ширини у % */
 .wrap { width: 100%; margin: 0 auto; }
 .cell { box-sizing: border-box; }
 #header, #footer { height: 5rem; }
