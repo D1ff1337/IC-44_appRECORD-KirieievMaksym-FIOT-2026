@@ -1,0 +1,7 @@
+/* Фіксована таблична верстка: ширина в px */
+.layout { width: 800px; margin: 0 auto; border-collapse: collapse; table-layout: fixed; }
+.layout td { height: 4rem; padding: 0.75rem; border: 1px solid #fff; }
+.layout .c1, .layout .c3 { height: 5rem; }
+.layout .w1 { width: 150px; }
+.layout .w2 { width: 500px; }
+.layout .c4 { height: 18rem; }

@@ -1,0 +1,99 @@
+/* ===== Завдання №3, варіант 7 — верстка Flexbox ===== */
+:root { --blue: #3399f3; --orange: #ff9933; --yellow: #ffe100; --gold: #ffd43b; --dark: #222328; }
+* { box-sizing: border-box; }
+html { font-size: 100%; }
+body { margin: 0; font-family: "Montserrat", Arial, sans-serif; color: var(--dark); background: #fff; }
+a { text-decoration: none; }
+
+/* Кнопки */
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.9rem 1.5rem; font-size: 0.85rem; font-weight: 700; color: var(--dark); border-radius: 0.3rem; transition: transform .25s, box-shadow .25s; }
+.btn:hover { transform: translateY(-0.15rem); box-shadow: 0 0.4rem 0.9rem rgba(0, 0, 0, .25); }
+.btn--yellow { background: var(--yellow); }
+.btn--gold { background: var(--gold); }
+.btn--blue { background: var(--blue); }
+
+/* ===== 1. Навігація ===== */
+.topbar { padding: 0.5rem 1rem; }
+.menu { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.5rem; max-width: 48rem; }
+.menu a, .city { display: flex; align-items: center; padding: 0.6rem 0.8rem; font: 700 0.95rem "Montserrat", Arial, sans-serif; color: #fff; background: #000; transition: background .25s; }
+.menu a:hover { background: var(--blue); }
+.city { flex: 1 1 10rem; justify-content: center; gap: 0.9rem; border: 0; background: #444; cursor: pointer; }
+.arrow { width: 0; height: 0; border: 0.3rem solid transparent; border-top-color: var(--blue); margin-top: 0.3rem; }
+
+/* ===== 2. Програма курсу ===== */
+.program { display: flex; flex-direction: column; padding: 2rem 4%; border-bottom: 1px solid #000; }
+.program__title { margin: 0 0 3rem; text-align: center; font-size: 2.6rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; }
+.program__title span { display: block; font-size: 1.3rem; color: var(--orange); text-transform: uppercase; }
+.program__row { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; }
+.hours { flex: 0 0 22%; }
+.hours__num { position: relative; height: 9rem; }
+.outline, .solid { position: absolute; font-size: 9.5rem; font-weight: 800; line-height: 1; }
+.outline { top: -1rem; left: 0; color: transparent; -webkit-text-stroke: 1.5px var(--orange); }
+.solid { top: 3rem; left: 4.5rem; font-size: 7rem; color: var(--orange); }
+.hours__label { font-size: 2.2rem; font-weight: 800; text-transform: uppercase; color: #fff; -webkit-text-stroke: 1.5px var(--dark); }
+.hours__text { margin: 1.2rem 0 0; font-size: 1.15rem; font-weight: 700; text-transform: uppercase; }
+.topics { flex: 0 0 34%; margin: 0; padding: 0; list-style: none; font-size: 1rem; font-weight: 700; text-transform: uppercase; }
+.topics li { display: flex; align-items: flex-start; gap: 0.8rem; padding: 0.7rem 0; transition: color .25s, transform .25s; }
+.topics li:hover { color: var(--blue); transform: translateX(0.4rem); }
+.topics li.active { color: var(--blue); }
+.topics i { flex: 0 0 1.2rem; font-style: normal; font-size: 0.7rem; color: #bbb; writing-mode: vertical-rl; transform: rotate(180deg); }
+.topics li.active i { color: var(--blue); }
+.ghost { flex: 1 1 auto; overflow: hidden; align-self: stretch; font-size: 9rem; font-weight: 800; line-height: 0.95; text-align: left; color: #eef4fc; white-space: nowrap; padding-top: 1rem; }
+.ghost { -webkit-text-stroke: 0; }
+.program__btn { align-self: flex-end; margin-top: -3.5rem; }
+
+/* ===== 3. Тарифи ===== */
+.pricing { padding: 0 0 3rem; background: var(--blue); }
+.pricing__tab { display: inline-block; padding: 0.55rem 3rem 0.55rem 0.9rem; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; background: var(--gold); clip-path: polygon(0 0, 100% 0, calc(100% - 1.2rem) 100%, 0 100%); }
+.pricing__cards { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; padding: 1.5rem 5.5% 0; }
+.plan { display: flex; flex-direction: column; flex: 0 1 23rem; min-height: 26rem; padding: 1.4rem 1.7rem; background: #fff; border-radius: 0.6rem; transition: transform .3s, box-shadow .3s; }
+.plan:hover { transform: translateY(-0.4rem); box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, .25); }
+.plan h3 { margin: 0 0 1.2rem; font-size: 0.95rem; text-align: center; text-transform: uppercase; }
+.plan__list { margin: 0; padding: 0; list-style: none; font-size: 0.78rem; }
+.plan__list li { position: relative; padding: 0.4rem 0 0.4rem 1.7rem; }
+.plan__list li::before { content: "✔"; position: absolute; left: 0; color: #5cb85c; }
+.plan__list li.off { color: #888; }
+.plan__list li.off::before { content: ""; width: 0.8rem; height: 0.8rem; top: 0.55rem; background: #eaf2fc; border-radius: 50%; }
+.plan__note { margin: 0; font-size: 0.78rem; }
+.plan__old { margin-top: auto; padding-top: 1rem; font-size: 1.3rem; font-weight: 800; text-align: center; color: var(--blue); text-decoration: line-through; text-decoration-color: #e0262b; text-decoration-thickness: 2px; }
+.plan__price { margin: 0.6rem 0; padding-bottom: 0.7rem; font-size: 1.4rem; font-weight: 800; text-align: center; color: var(--blue); border-bottom: 1px solid #eee; }
+.plan__places { margin-bottom: 0.7rem; font-size: 0.65rem; font-weight: 700; text-align: center; color: var(--blue); }
+
+/* ===== 4. Банер ===== */
+.banner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 2.2rem 5%; background: var(--blue); border-top: 1px solid #333; }
+.banner p { margin: 0; }
+.banner__small { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; color: #fff; }
+.banner__big { font-size: 2.6rem; font-weight: 800; text-transform: uppercase; }
+.banner__note { margin-top: 1.4rem !important; font-size: 0.95rem; font-weight: 600; color: #fff; }
+.banner .btn { flex: 0 0 16.5rem; margin-right: 12%; }
+
+/* ===== 5. Головний блок QA ===== */
+.hero { position: relative; display: flex; align-items: center; justify-content: space-between; overflow: hidden; min-height: 25rem; border-top: 1px solid var(--blue); }
+.hero__bgtext { position: absolute; top: 0; left: 0; font-size: 18rem; font-weight: 800; line-height: 1; color: #f7f7f7; white-space: nowrap; }
+.hero__text { position: relative; flex: 0 1 38rem; padding: 2rem 2rem 2rem 2%; }
+.hero h1 { margin: 0 0 1.5rem; font-size: 1.3rem; text-transform: uppercase; color: var(--orange); }
+.hero h3 { margin: 0 0 0.8rem; font-size: 0.95rem; }
+.hero p { margin: 0 0 2rem; font-size: 0.8rem; text-align: justify; line-height: 1.5; }
+.hero .btn { padding: 1rem 2.5rem; font-weight: 500; font-size: 0.9rem; }
+.hero__photo { position: relative; align-self: stretch; display: flex; align-items: flex-end; justify-content: center; flex: 0 0 34%; background: linear-gradient(to right, transparent 25%, var(--blue) 25%); }
+.hero__photo svg { width: 100%; max-width: 19rem; height: auto; }
+
+/* ===== Адаптивність (media queries) ===== */
+@media (max-width: 1024px) {
+  .program__row { flex-wrap: wrap; }
+  .ghost { display: none; }
+  .hours, .topics { flex: 1 1 18rem; }
+  .program__btn { margin-top: 1.5rem; }
+  .plan { flex-basis: 45%; }
+  .hero__bgtext { font-size: 12rem; }
+}
+@media (max-width: 600px) {
+  .program__title { font-size: 2rem; }
+  .plan { flex-basis: 100%; min-height: 0; }
+  .banner { flex-direction: column; align-items: flex-start; }
+  .banner .btn { margin-right: 0; flex-basis: auto; }
+  .banner__big { font-size: 2rem; }
+  .hero { flex-direction: column; }
+  .hero__text { flex-basis: auto; padding-right: 5%; }
+  .hero__photo { flex-basis: auto; width: 100%; min-height: 18rem; }
+}

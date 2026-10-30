@@ -1,0 +1,9 @@
+/* Montserrat (локально, кирилиця + латиниця) */
+@font-face { font-family: "Montserrat"; font-weight: 500; src: url("../fonts/montserrat-cyrillic-500-normal.woff2") format("woff2"); unicode-range: U+0400-04FF; }
+@font-face { font-family: "Montserrat"; font-weight: 500; src: url("../fonts/montserrat-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF; }
+@font-face { font-family: "Montserrat"; font-weight: 600; src: url("../fonts/montserrat-cyrillic-600-normal.woff2") format("woff2"); unicode-range: U+0400-04FF; }
+@font-face { font-family: "Montserrat"; font-weight: 600; src: url("../fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF; }
+@font-face { font-family: "Montserrat"; font-weight: 700; src: url("../fonts/montserrat-cyrillic-700-normal.woff2") format("woff2"); unicode-range: U+0400-04FF; }
+@font-face { font-family: "Montserrat"; font-weight: 700; src: url("../fonts/montserrat-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF; }
+@font-face { font-family: "Montserrat"; font-weight: 800; src: url("../fonts/montserrat-cyrillic-800-normal.woff2") format("woff2"); unicode-range: U+0400-04FF; }
+@font-face { font-family: "Montserrat"; font-weight: 800; src: url("../fonts/montserrat-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF; }

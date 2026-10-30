@@ -1,0 +1,7 @@
+/* Гумова таблична верстка: ширина у відсотках */
+.layout { width: 100%; margin: 0 auto; border-collapse: collapse; table-layout: fixed; }
+.layout td { height: 4rem; padding: 0.75rem; border: 1px solid #fff; }
+.layout .c1, .layout .c3 { height: 5rem; }
+.layout .w1 { width: 20%; }
+.layout .w2 { width: 60%; }
+.layout .c4 { height: 18rem; }

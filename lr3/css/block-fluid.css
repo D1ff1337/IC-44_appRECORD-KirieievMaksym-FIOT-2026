@@ -1,0 +1,9 @@
+/* Гумова блокова верстка на плаваючих елементах (float), ширини у % */
+.wrap { width: 100%; margin: 0 auto; }
+.cell { box-sizing: border-box; }
+#header, #footer { height: 5rem; }
+.body { overflow: hidden; background: linear-gradient(to right, #ffc700 20%, #fff 20%); }
+#left { float: left; width: 20%; height: 22rem; }
+#top { float: left; width: 80%; height: 4rem; background: #ffc700; }
+#content { float: left; width: 80%; height: 18rem; }
+#footer { clear: both; }

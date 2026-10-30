@@ -1,0 +1,7 @@
+/* Завдання №2: спільні стилі для табличної та блокової верстки */
+body { margin: 0; padding: 1rem; font-family: Arial, sans-serif; background: #e9eef5; }
+h1 { font-size: 1.1rem; text-align: center; color: #1f3a5f; }
+.c1, .c3 { background: #1e7bd8; color: #fff; text-align: center; font-weight: bold; }
+.c2, .c5 { background: #ffc700; text-align: center; }
+.c4 { background: #fff; text-align: center; }
+.cell { padding: 1rem; }
